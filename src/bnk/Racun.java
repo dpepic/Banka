@@ -6,22 +6,27 @@ public class Racun
 {
 	static Vector<String> racuni = new Vector<String>();
 	private double stanje;
-	String idRacuna = null;
+	final String idRacuna;
 	
 	public Racun(String r)
 	{
-		this.otvoriRacun(r);
+		this.idRacuna = otvoriRacun(r); //samo ovde
+		               //mozemo da dodelimo vrednost za
+		              //final
 	}
 	
-	public void otvoriRacun(String id)
+	public String otvoriRacun(String id)
 	{
-		if (this.idRacuna == null && !Racun.racuni.contains(id))
+		if (!Racun.racuni.contains(id))
 		{
-			this.idRacuna = id;
 			Racun.racuni.add(id);
+			return id;
 		}
 		else
+		{
 			System.out.println("Racun vec postoji!");
+			return null;
+		}
 	}
 	
 	public double depozit(double iznos)
