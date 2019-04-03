@@ -2,7 +2,7 @@ package bnk;
 
 import java.util.Vector;
 
-public class Racun 
+public class Racun implements Operacije
 {
 	static Vector<String> racuni = new Vector<String>();
 	double stanje;
@@ -31,42 +31,42 @@ public class Racun
 		}
 	}
 	
-	public double depozit(double iznos)
+	public String depozit(double iznos)
 	{
 		if (this.idRacuna == null)
-			return -1;
+			return null;
 		
 		this.stanje += iznos * this.kurs;
-		return this.stanje;
+		return this.stanje + " " + this.valuta.name();
 	}
 	
-	public double isplata(double iznos)
+	public String isplata(double iznos)
 	{
 		if (this.idRacuna == null)
-			return -1;
+			return null;
 		
 		if (this.stanje - iznos * this.kurs >= 0)
 		{
 			this.stanje -= iznos * this.kurs;
-			return this.stanje;
+			return this.stanje+ " " + this.valuta.name();
 		} else
 		{
 			System.out.println("Premalo kesa!");
-			return this.stanje;
+			return this.stanje + " " + this.valuta.name();
 		}
 	}
 	
-	public double provera()
+	public String provera()
 	{
 		if (this.idRacuna == null)
-			return -1;
+			return null;
 		
-		return this.stanje;
+		return this.stanje + " " + this.valuta.name();
 	}
 	
 	enum devize
 	{
-		RSD,
+		RSD, 
 		EUR,
 		BAM,
 		USD,

@@ -8,40 +8,20 @@ public class Main
 	
 	public static void main(String[] args) 
 	{	
+		Vector<Klijent> zaDbg = Main.klijenti;
 		klijenti.add(new Klijent("Pera", "r-001"));
-		klijenti.get(0).racuni.add(new Racun("r-001"));
-		klijenti.get(0).racuni.add(new Racun("r-001"));
-		//klijenti.add(new Klijent("Neki", "r-001"));
-		proveriRacune();
+		klijenti.get(0).racuni.add(new DevizniRacun("d-001", Racun.devize.EUR, 0.5));
+		System.out.println(klijenti.get(0).racuni.get(0).depozit(500));
+		System.out.println("Provera stanja: " + klijenti.get(0).racuni.get(0).provera());
+		System.out.println(klijenti.get(0).racuni.get(1).depozit(500));
+		((DevizniRacun)klijenti.get(0).racuni.get(1)).pretvoriUdomace(100, klijenti.get(0).racuni.get(0));
 		
-		klijenti.get(0).racuni.add(new DevizniRacun("d-001", "zklj", 1));
-		Vector<Klijent> zaDbg = klijenti;
-		/*klijenti.add(new Klijent("Pera", "r-001"));
-		klijenti.add(new Klijent("Taj i taj", "r-001"));
+		Racun test = new Racun("neki-995");
+		SpecificanRacun sRac = new SpecificanRacun();
+		Operacije ovoJeInterfejs = test;
+		Operacije InterfejsJej = sRac;
 		
-		klijenti.get(0).racuni.add(new Racun("zklj"));
-		klijenti.get(0).racuni.add(new Racun("r-001"));
-		klijenti.get(1).racuni.add(new Racun("r-010"));
-		proveriRacune();
 		
-		KlasaA test = new KlasaA();
-		saKlasom(test);
-		saIntom(test.intKaoStanje);
-		test.intKaoStanje = 10;
-		
-		KlasaA test2 = new KlasaA();
-		KlasaA test3 = new KlasaA();*/
-		
-	}
-	
-	public static void saKlasom(KlasaA nesto)
-	{
-		nesto.intKaoStanje++;
-	}
-	
-	public static void saIntom(int broj)
-	{
-		broj++;
 	}
 	
 	public static void proveriRacune()
@@ -60,5 +40,4 @@ public class Main
 			}
 		}
 	}
-
 }
