@@ -5,8 +5,10 @@ import java.util.Vector;
 public class Racun 
 {
 	static Vector<String> racuni = new Vector<String>();
-	private double stanje;
+	double stanje;
 	final String idRacuna;
+	devize valuta = devize.RSD;
+	double kurs = 1;
 	
 	public Racun(String r)
 	{
@@ -34,7 +36,7 @@ public class Racun
 		if (this.idRacuna == null)
 			return -1;
 		
-		this.stanje += iznos;
+		this.stanje += iznos * this.kurs;
 		return this.stanje;
 	}
 	
@@ -43,9 +45,9 @@ public class Racun
 		if (this.idRacuna == null)
 			return -1;
 		
-		if (this.stanje - iznos >= 0)
+		if (this.stanje - iznos * this.kurs >= 0)
 		{
-			this.stanje -= iznos;
+			this.stanje -= iznos * this.kurs;
 			return this.stanje;
 		} else
 		{
@@ -61,5 +63,15 @@ public class Racun
 		
 		return this.stanje;
 	}
-
+	
+	enum devize
+	{
+		RSD,
+		EUR,
+		BAM,
+		USD,
+		GBP
+	}
 }
+
+

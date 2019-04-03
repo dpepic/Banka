@@ -14,6 +14,8 @@ public class Main
 		//klijenti.add(new Klijent("Neki", "r-001"));
 		proveriRacune();
 		
+		klijenti.get(0).racuni.add(new DevizniRacun("d-001", "zklj", 1));
+		Vector<Klijent> zaDbg = klijenti;
 		/*klijenti.add(new Klijent("Pera", "r-001"));
 		klijenti.add(new Klijent("Taj i taj", "r-001"));
 		
@@ -49,7 +51,7 @@ public class Main
 			System.out.println("Klijent: " + k.id);
 			for (int i = 0; i < k.racuni.size(); i++)
 			{
-				if (k.racuni.get(i).idRacuna == null) //"null" -- null
+				if (k.racuni.get(i).idRacuna == null)
 				{
 					System.out.println(String.format("Klijent %s ima los racun!", k.id));
 					k.racuni.remove(i);
